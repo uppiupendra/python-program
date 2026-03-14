@@ -1,0 +1,7 @@
+def subtractProductAndSum(n: int) -> int:
+    digits = [int(d) for d in str(n)]
+    product = 1
+    for d in digits:
+        product *= d
+    total_sum = sum(digits)
+    return product - total_sum
