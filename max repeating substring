@@ -1,0 +1,7 @@
+def maxRepeating(sequence: str, word: str) -> int:
+    k = 0
+    repeated = word
+    while repeated in sequence:
+        k += 1
+        repeated += word
+    return k
