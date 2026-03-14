@@ -1,0 +1,10 @@
+def longestAlternatingSubsequence(words, groups):
+    subsequence = []
+    last_group = None
+    
+    for w, g in zip(words, groups):
+        if last_group is None or g != last_group:
+            subsequence.append(w)
+            last_group = g
+    
+    return subsequence
