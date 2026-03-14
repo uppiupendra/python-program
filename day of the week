@@ -1,0 +1,26 @@
+def dayOfTheWeek(day: int, month: int, year: int) -> str:
+    days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    
+    def is_leap(y):
+        return (y % 400 == 0) or (y % 4 == 0 and y % 100 != 0)
+    
+    # Days in months
+    month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    
+    # Count days from 1971 to year-1
+    total_days = 0
+    for y in range(1971, year):
+        total_days += 366 if is_leap(y) else 365
+    
+    # Count days from Jan to month-1 in current year
+    for m in range(month - 1):
+        if m == 1 and is_leap(year):  # February in leap year
+            total_days += 29
+        else:
+            total_days += month_days[m]
+    
+    # Add days in current month
+    total_days += day - 1
+    
+    # Jan 1, 1971 was Friday (index 5)
+    return days[(total_days + 5) % 7]
