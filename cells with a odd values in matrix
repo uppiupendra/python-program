@@ -1,0 +1,19 @@
+def oddCells(m, n, indices):
+    rowCount = [0] * m
+    colCount = [0] * n
+    
+    # Apply increments
+    for r, c in indices:
+        rowCount[r] += 1
+        colCount[c] += 1
+    
+    # Count odd/even rows
+    oddRows = sum(1 for r in rowCount if r % 2 == 1)
+    evenRows = m - oddRows
+    
+    # Count odd/even cols
+    oddCols = sum(1 for c in colCount if c % 2 == 1)
+    evenCols = n - oddCols
+    
+    # Odd cells formula
+    return oddRows * evenCols + evenRows * oddCols
